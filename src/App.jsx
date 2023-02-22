@@ -6,16 +6,18 @@ function App() {
   useEffect(() => {
     console.log("App mounted");
 
-    function onBeforeUnload(e) {
+    window.onunload = window.onbeforeunload = function onBeforeUnload(e) {
       e.preventDefault();
 
       console.log("App Unloading...");
       // alert("are u sure");
 
       e.returnValue = "";
-    }
 
-    window.addEventListener("beforeunload", onBeforeUnload);
+      return "";
+    };
+
+    // window.addEventListener("beforeunload", onBeforeUnload);
 
     return () => {
       // window.removeEventListener("beforeunload", onBeforeUnload);
